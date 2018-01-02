@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class Drink {
 
-    public double drinkOptions(int drinkChoice, double cash) throws Exception {
+    public double drinkOptions(int drinkChoice, double cash, String paymentMethod) throws Exception {
         double price;
 
         CheckBalance balance = new CheckBalance();
@@ -21,27 +21,27 @@ public class Drink {
         switch (drinkChoice) {
             case 1:
                 price = drinkPrices.get("Coke");
-                balance.enoughCash("Coke", cash, price);
+                balance.enoughCash("Coke", cash, price, paymentMethod);
                 break;
 
             case 2:
                 price = drinkPrices.get("Coke Zero");
-                balance.enoughCash("Coke Zero", cash, price);
+                balance.enoughCash("Coke Zero", cash, price, paymentMethod);
                 break;
 
             case 3:
                 price = drinkPrices.get("Fanta");
-                balance.enoughCash("Fanta", cash, price);
+                balance.enoughCash("Fanta", cash, price, paymentMethod);
                 break;
 
             case 4:
                 price = drinkPrices.get("Red bull");
-                balance.enoughCash("Red bull", cash, price);
+                balance.enoughCash("Red bull", cash, price, paymentMethod);
                 break;
 
             case 5:
                 price = drinkPrices.get("Sprite");
-                balance.enoughCash("Sprite", cash, price);
+                balance.enoughCash("Sprite", cash, price, paymentMethod);
                 break;
 
             default:

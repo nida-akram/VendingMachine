@@ -11,6 +11,7 @@ public class VendingMachine {
         double price = 0;
         int paymentType;
         double cash=0;
+        String paymentMethod="";
 
         Storage store = new Storage();
         store.availableCash(cash, price);
@@ -21,11 +22,13 @@ public class VendingMachine {
 
         if (paymentType == 1) {
             Card card = new Card();
-            cash = card.takePayment(cash);
+            cash = card.takePayment(cash, paymentMethod);
+            paymentMethod = "Card";
         }
         else if (paymentType == 2) {
             Coins coins = new Coins();
-            cash = coins.takePayment(cash);
+            cash = coins.takePayment(cash, paymentMethod);
+            paymentMethod = "Coins";
         }
 
         else {
@@ -33,7 +36,7 @@ public class VendingMachine {
         }
 
         Customer input = new Customer();
-        input.options(cash);
+        input.options(cash, paymentMethod);
     }
 
     public double checkStorage(double cash) {

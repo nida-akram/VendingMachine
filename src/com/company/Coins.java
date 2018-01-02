@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Coins implements Payment, ReturnChange {
     @Override
-    public double takePayment(double cash) {
+    public double takePayment(double cash, String paymentMethod) {
         Scanner input = new Scanner(System.in);
         System.out.println("Please insert cash");
         cash = input.nextDouble();

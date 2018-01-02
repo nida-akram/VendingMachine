@@ -5,7 +5,7 @@ import java.util.Scanner;
 public class Customer {
     Scanner input = new Scanner(System.in);
 
-    public void options(double cash) {
+    public void options(double cash, String paymentMethod) {
         int drink;
         System.out.println("Please choose drink from the following options:");
         System.out.println(" 1. Coke £1.50\n 2. Coke Zero £2.00\n 3. Fanta £2.35\n 4. Red bull £5.00\n 5. Sprite £3.50");
@@ -18,10 +18,10 @@ public class Customer {
         money.checkStorage(cash);
 
         try {
-            choice.drinkOptions(drink, cash);
+            choice.drinkOptions(drink, cash, paymentMethod);
         }
         catch (Exception e){
-            options(cash);
+            options(cash, paymentMethod);
             return;
         }
     }

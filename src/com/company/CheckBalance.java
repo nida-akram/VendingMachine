@@ -4,10 +4,10 @@ import java.util.Scanner;
 
 public class CheckBalance {
 
-    public void enoughCash(String drinkName, double cash, double price) {
+    public void enoughCash(String drinkName, double cash, double price, String paymentMethod) {
         Scanner input = new Scanner(System.in);
 
-        if (cash > price) {
+        if (cash > price || paymentMethod.equals("Card")) {
             System.out.println("Here is your " + drinkName);
             Storage left = new Storage();
             cash = left.availableCash(cash, price);
@@ -17,11 +17,18 @@ public class CheckBalance {
 
             if (multipleDrinks(choice) == true) {
                 Customer customer = new Customer();
-                customer.options(cash);
+                customer.options(cash, paymentMethod);
             }
             else {
-                Coins change = new Coins();
-                change.returnChange(cash);
+                if (paymentMethod.equals("Coins")) {
+                    Coins change = new Coins();
+                    change.returnChange(cash);
+                }
+
+                else if (paymentMethod.equals("Card")) {
+                    Card card = new Card();
+                    card.payment(cash);
+                }
             }
         }
     }
